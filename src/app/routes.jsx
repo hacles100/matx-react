@@ -29,7 +29,7 @@ const routes = [
       ...materialRoutes,
       // dashboard route
       {
-        path: '/dashboard/default',
+        path: '/dashboard',
         element: <Analytics />,
         auth: authRoles.admin
       },
@@ -45,11 +45,11 @@ const routes = [
 
   // session pages route
   { path: '/session/404', element: <NotFound /> },
-  { path: '/session/signin', element: <JwtLogin /> },
+  { path: '/session/signin/default', element: <JwtLogin /> },
   { path: '/session/signup', element: <JwtRegister /> },
   { path: '/session/forgot-password', element: <ForgotPassword /> },
 
-  { path: '/', element: <Navigate to="dashboard/default" /> },
+  { path: '/', element: <Navigate to="session/signin/default" /> },
   { path: '*', element: <NotFound /> }
 ];
 

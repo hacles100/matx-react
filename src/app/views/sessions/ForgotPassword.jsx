@@ -28,7 +28,7 @@ const ForgotPasswordRoot = styled(JustifyBox)(() => ({
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('admin@example.com');
+  const [email, setEmail] = useState('hericlesrocha@gmail.com');
 
   const handleFormSubmit = () => {
     console.log(email);
@@ -57,7 +57,7 @@ const ForgotPassword = () => {
                 />
 
                 <Button fullWidth variant="contained" color="primary" type="submit">
-                  Reset Password
+                   Redefinir a senha
                 </Button>
 
                 <Button
@@ -67,7 +67,7 @@ const ForgotPassword = () => {
                   onClick={() => navigate(-1)}
                   sx={{ mt: 2 }}
                 >
-                  Go Back
+                  Voltar
                 </Button>
               </form>
             </ContentBox>

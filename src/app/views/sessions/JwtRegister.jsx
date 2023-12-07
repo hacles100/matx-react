@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
 import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
+import { Card, Grid, TextField } from '@mui/material';
 import { Box, styled } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
 import useAuth from 'app/hooks/useAuth';
@@ -37,15 +37,19 @@ const initialValues = {
   email: '',
   password: '',
   username: '',
-  remember: true
+ // remember: true
 };
 
 // form field validation schema
 const validationSchema = Yup.object().shape({
+  username: Yup.string()
+  .min(3, 'Nome deve ter no minimo 3 caracteres!')
+  .required('Nome Obrigatório!')
+  ,
   password: Yup.string()
-    .min(6, 'Password must be 6 character length')
-    .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!')
+    .min(8, 'Senha deve ter no minimo 8 caracteres!')
+    .required('Senha Obrigatória!'),
+  email: Yup.string().email('Email Inválido').required('Email Obrigatório!')
 });
 
 const JwtRegister = () => {
@@ -95,7 +99,7 @@ const JwtRegister = () => {
                       size="small"
                       type="text"
                       name="username"
-                      label="Username"
+                      label="Nome"
                       variant="outlined"
                       onBlur={handleBlur}
                       value={values.username}
@@ -124,7 +128,7 @@ const JwtRegister = () => {
                       size="small"
                       name="password"
                       type="password"
-                      label="Password"
+                      label="Senha"
                       variant="outlined"
                       onBlur={handleBlur}
                       value={values.password}
@@ -134,19 +138,6 @@ const JwtRegister = () => {
                       sx={{ mb: 2 }}
                     />
 
-                    <FlexBox gap={1} alignItems="center">
-                      <Checkbox
-                        size="small"
-                        name="remember"
-                        onChange={handleChange}
-                        checked={values.remember}
-                        sx={{ padding: 0 }}
-                      />
-
-                      <Paragraph fontSize={13}>
-                        I have read and agree to the terms of service.
-                      </Paragraph>
-                    </FlexBox>
 
                     <LoadingButton
                       type="submit"
@@ -155,16 +146,16 @@ const JwtRegister = () => {
                       variant="contained"
                       sx={{ mb: 2, mt: 3 }}
                     >
-                      Regiser
+                      Registrar
                     </LoadingButton>
 
                     <Paragraph>
-                      Already have an account?
+                      Já tens uma conta?
                       <NavLink
-                        to="/session/signin"
+                        to="/"
                         style={{ color: theme.palette.primary.main, marginLeft: 5 }}
                       >
-                        Login
+                        Entrar
                       </NavLink>
                     </Paragraph>
                   </form>

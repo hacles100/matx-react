@@ -1,5 +1,5 @@
 import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
+import { Card, Grid, TextField } from '@mui/material';
 import { Box, styled, useTheme } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
 import useAuth from 'app/hooks/useAuth';
@@ -34,17 +34,17 @@ const JWTRoot = styled(JustifyBox)(() => ({
 
 // inital login credentials
 const initialValues = {
-  email: 'jason@ui-lib.com',
+  email: 'hericlesrocha@gmail.com',
   password: 'dummyPass',
-  remember: true
+  //remember: false
 };
 
 // form field validation schema
 const validationSchema = Yup.object().shape({
   password: Yup.string()
-    .min(6, 'Password must be 6 character length')
-    .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!')
+    .min(8, 'Senha deve ter no minimo 8 caracteres!')
+    .required('Senha Obrigatória!'),
+  email: Yup.string().email('Email inválido!').required('Email obrigatório!')
 });
 
 const JwtLogin = () => {
@@ -58,7 +58,7 @@ const JwtLogin = () => {
     setLoading(true);
     try {
       await login(values.email, values.password);
-      navigate('/');
+      navigate('/dashboard');
     } catch (e) {
       setLoading(false);
     }
@@ -103,7 +103,7 @@ const JwtLogin = () => {
                       size="small"
                       name="password"
                       type="password"
-                      label="Password"
+                      label="Senha"
                       variant="outlined"
                       onBlur={handleBlur}
                       value={values.password}
@@ -114,23 +114,13 @@ const JwtLogin = () => {
                     />
 
                     <FlexBox justifyContent="space-between">
-                      <FlexBox gap={1}>
-                        <Checkbox
-                          size="small"
-                          name="remember"
-                          onChange={handleChange}
-                          checked={values.remember}
-                          sx={{ padding: 0 }}
-                        />
-
-                        <Paragraph>Remember Me</Paragraph>
-                      </FlexBox>
+                  
 
                       <NavLink
                         to="/session/forgot-password"
                         style={{ color: theme.palette.primary.main }}
                       >
-                        Forgot password?
+                        Esqueceu a Senha?
                       </NavLink>
                     </FlexBox>
 
@@ -141,16 +131,16 @@ const JwtLogin = () => {
                       variant="contained"
                       sx={{ my: 2 }}
                     >
-                      Login
+                      Entrar
                     </LoadingButton>
 
                     <Paragraph>
-                      Don't have an account?
+                      Não tens uma conta?
                       <NavLink
                         to="/session/signup"
                         style={{ color: theme.palette.primary.main, marginLeft: 5 }}
                       >
-                        Register
+                        Registrar
                       </NavLink>
                     </Paragraph>
                   </form>
