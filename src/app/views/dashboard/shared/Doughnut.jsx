@@ -81,13 +81,19 @@ const DoughnutChart = ({ height, color = [] }) => {
         data: [
           {
             value: 65,
-            name: 'Google'
+            name: 'Alôu',
+            itemStyle: {
+              color: 'red' // Defina a cor desejada para "Alôu", por exemplo, azul
+            }
           },
           {
             value: 20,
-            name: 'Facebook'
+            name: 'Tmais',
+            itemStyle: {
+              color: 'darkorange' // Defina a cor desejada para "Alôu", por exemplo, azul
+            }
           },
-          { value: 15, name: 'Others' }
+          //{ value: 15, name: 'Others' }
         ],
         itemStyle: {
           emphasis: {

@@ -12,7 +12,7 @@ import {
   useTheme
 } from '@mui/material';
 
-import { MatxMenu, MatxSearchBox } from 'app/components';
+import { MatxMenu} from 'app/components';
 import { themeShadows } from 'app/components/MatxTheme/themeColors';
 import { NotificationProvider } from 'app/contexts/NotificationContext';
 import useAuth from 'app/hooks/useAuth';
@@ -21,7 +21,7 @@ import { topBarHeight } from 'app/utils/constant';
 
 import { Span } from '../../Typography';
 import NotificationBar from '../../NotificationBar/NotificationBar';
-import ShoppingCart from '../../ShoppingCart';
+
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.primary
@@ -76,10 +76,6 @@ const StyledItem = styled(MenuItem)(({ theme }) => ({
   '& span': { marginRight: '10px', color: theme.palette.text.primary }
 }));
 
-const IconBox = styled('div')(({ theme }) => ({
-  display: 'inherit',
-  [theme.breakpoints.down('md')]: { display: 'none !important' }
-}));
 
 const Layout1Topbar = () => {
   const theme = useTheme();
@@ -109,37 +105,21 @@ const Layout1Topbar = () => {
           <StyledIconButton onClick={handleSidebarToggle}>
             <Icon>menu</Icon>
           </StyledIconButton>
-
-          <IconBox>
-            <StyledIconButton>
-              <Icon>mail_outline</Icon>
-            </StyledIconButton>
-
-            <StyledIconButton>
-              <Icon>web_asset</Icon>
-            </StyledIconButton>
-
-            <StyledIconButton>
-              <Icon>star_outline</Icon>
-            </StyledIconButton>
-          </IconBox>
         </Box>
 
         <Box display="flex" alignItems="center">
-          <MatxSearchBox />
+        {/* <MatxSearchBox /> */}
 
           <NotificationProvider>
             <NotificationBar />
           </NotificationProvider>
-
-          <ShoppingCart />
 
           <MatxMenu
             menuButton={
               <UserMenu>
                 <Hidden xsDown>
                   <Span>
-                    Hi <strong>{user.name}</strong>
+                    <strong>{user.name}</strong>
                   </Span>
                 </Hidden>
                 <Avatar src={user.avatar} sx={{ cursor: 'pointer' }} />
@@ -147,27 +127,27 @@ const Layout1Topbar = () => {
             }
           >
             <StyledItem>
-              <Link to="/">
+              <Link to="/dashboard">
                 <Icon> home </Icon>
-                <Span> Home </Span>
+                <Span> Dashboard </Span>
               </Link>
             </StyledItem>
 
             <StyledItem>
               <Link to="/page-layouts/user-profile">
                 <Icon> person </Icon>
-                <Span> Profile </Span>
+                <Span> Perfil </Span>
               </Link>
             </StyledItem>
 
             <StyledItem>
               <Icon> settings </Icon>
-              <Span> Settings </Span>
+              <Span> Definições </Span>
             </StyledItem>
 
             <StyledItem onClick={logout}>
               <Icon> power_settings_new </Icon>
-              <Span> Logout </Span>
+              <Span> Sair </Span>
             </StyledItem>
           </MatxMenu>
         </Box>

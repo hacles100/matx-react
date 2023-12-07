@@ -2,10 +2,7 @@ import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
 import Campaigns from './shared/Campaigns';
 import DoughnutChart from './shared/Doughnut';
-import RowCards from './shared/RowCards';
 import StatCards from './shared/StatCards';
-import StatCards2 from './shared/StatCards2';
-import UpgradeCard from './shared/UpgradeCard';
 import TopOperadoraTable from './shared/TopOperadoraTable';
 
 
@@ -44,16 +41,15 @@ const Analytics = () => {
           <Grid item lg={8} md={8} sm={12} xs={12}>
             <StatCards />
             <TopOperadoraTable />
-            <StatCards2 />
-
-            <H4>Ongoing Project</H4>
-            <RowCards />
+          
+            <H4>Outro Grafico</H4>
+      
           </Grid>
 
           <Grid item lg={4} md={4} sm={12} xs={12}>
             <Card sx={{ px: 3, py: 2, mb: 3 }}>
-              <Title>Traffic Sources</Title>
-              <SubTitle>Last 30 days</SubTitle>
+              <Title>Operadoras</Title>
+              <SubTitle>Ultimos 3 dias</SubTitle>
 
               <DoughnutChart
                 height="300px"
@@ -61,7 +57,6 @@ const Analytics = () => {
               />
             </Card>
 
-            <UpgradeCard />
             <Campaigns />
           </Grid>
         </Grid>
