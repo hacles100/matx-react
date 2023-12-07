@@ -5,8 +5,9 @@ import DoughnutChart from './shared/Doughnut';
 import RowCards from './shared/RowCards';
 import StatCards from './shared/StatCards';
 import StatCards2 from './shared/StatCards2';
-import TopSellingTable from './shared/TopSellingTable';
 import UpgradeCard from './shared/UpgradeCard';
+import TopOperadoraTable from './shared/TopOperadoraTable';
+
 
 const ContentBox = styled('div')(({ theme }) => ({
   margin: '30px',
@@ -42,7 +43,7 @@ const Analytics = () => {
         <Grid container spacing={3}>
           <Grid item lg={8} md={8} sm={12} xs={12}>
             <StatCards />
-            <TopSellingTable />
+            <TopOperadoraTable />
             <StatCards2 />
 
             <H4>Ongoing Project</H4>
